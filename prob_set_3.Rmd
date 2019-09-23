@@ -1,6 +1,6 @@
 ---
 title: "Problem Set 3"
-author: "Thomas O'Leary"
+author: "Thomas O'Leary and Amanda Jones"
 date: "9/23/2019"
 output: pdf_document
 ---
@@ -9,11 +9,11 @@ output: pdf_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## R Structured population models
+# Structured population models
 
 ```{r comadre, echo = TRUE, eval = TRUE}
 load("/Users/tsoleary/Downloads/COMADRE_v.3.0.0.RData")
-
+# save stage transition matrix for the whales
 whale_mat <- comadre$mat[2136][[1]]$matA
 ```
 
@@ -24,24 +24,31 @@ We are looking _Physeter macrocephalus occupying_, specifically a population of 
 ### Eigenvalue
 
 ```{r eigenvalue, echo = TRUE, eval = TRUE}
-
 eigenvalue <- eigen(whale_mat)
-
 dom_eigen <- max(eigenvalue$values)
-
 ```
 
 ### Stable age distribution (i.e. eigenvector)
 
-```{r eigenvalue, echo = TRUE, eval = TRUE}
+```{r eigenvector, echo = TRUE, eval = TRUE}
+# get the eigenvector associated with dominant eigenvalue
+# first value refers to the calves and second value refers to the adults
+eigenvector <- eigenvalue$vectors[, 1]
 
-#???????
-right_eigenvector <- eigenvalue$vectors[, 2]
+# calculate the stable age distribution of calves to adults
+stable_age_ratio <- eigenvector[2]/eigenvector[1]
 
+prop_calves <- round(eigenvector[1]/(eigenvector[1] + eigenvector[2]), 
+                     digits = 3)
+prop_adults <- round(eigenvector[2]/(eigenvector[1] + eigenvector[2]), 
+                     digits = 3)
 ```
-
+There is a stable age distribution of approximately 79% adults and 21% unweened calves.
 
 ### Elastisity
+
+
+
 
 ### Sensitivity
 
