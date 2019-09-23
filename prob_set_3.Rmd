@@ -11,18 +11,41 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## R Structured population models
 
+```{r comadre, echo = TRUE, eval = TRUE}
+load("/Users/tsoleary/Downloads/COMADRE_v.3.0.0.RData")
 
-
-```{r cars}
-summary(cars)
+whale_mat <- comadre$mat[2136][[1]]$matA
 ```
 
-## Including Plots
+### Sperm whales
 
-You can also embed plots, for example:
+We are looking _Physeter macrocephalus occupying_, specifically a population of sperm whales in the Caribbean, to attempt to determine whether or not that population is expected to increase in size over time. We want to look at the the proportion between age classes, in this case, unweened calves and adults (excluding mature males). We are also curious how small changes in birth, and survival rates will impact growth trends. We would like to know if the population is healthy/stable and if it is not, which life stage will have the greatest impact for conservation strategies. 
 
-```{r pressure, echo=FALSE}
-plot(pressure)
+### Eigenvalue
+
+```{r eigenvalue, echo = TRUE, eval = TRUE}
+
+eigenvalue <- eigen(whale_mat)
+
+dom_eigen <- max(eigenvalue$values)
+
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+### Stable age distribution (i.e. eigenvector)
+
+```{r eigenvalue, echo = TRUE, eval = TRUE}
+
+#???????
+right_eigenvector <- eigenvalue$vectors[, 2]
+
+```
+
+
+### Elastisity
+
+### Sensitivity
+
+### What does this tell you about the population?
+
+### Address question proposed using eigenvalue, eigenvector, elastisity, & sensitivity
+
