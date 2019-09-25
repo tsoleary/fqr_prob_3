@@ -54,12 +54,23 @@ prop_adults
 ```
 
 
-### Elasticity
-
-
-
-
 ### Sensitivity
+
+```{r}
+sensitivity <- function(A) {
+  d <- eigen(A)$values   # eigen values
+  w <- eigen(A)$vectors  # right eigen vectors
+  v <- Conj(solve(w))    # complex conjugate of left eigen vectors
+  # output of eigenvalues is decreasingly sorted.
+  v[1,] %*% t(w[,1])
+}
+
+sensitivity(whale_mat)
+```
+
+
+
+### Elasticity
 
 ### What does this tell you about the population?
 
