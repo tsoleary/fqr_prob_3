@@ -12,14 +12,14 @@ knitr::opts_chunk$set(echo = TRUE)
 # Structured population models
 
 ```{r comadre, echo = TRUE, eval = TRUE}
-load("/Users/tsoleary/Downloads/COMADRE_v.3.0.0.RData")
+load("COMADRE_v.3.0.0.RData")
 # save stage transition matrix for the whales
 whale_mat <- comadre$mat[2136][[1]]$matA
 ```
 
 ### Sperm whales
 
-We are looking _Physeter macrocephalus occupying_, specifically a population of sperm whales in the Caribbean, to attempt to determine whether or not that population is expected to increase in size over time. We want to look at the the proportion between age classes, in this case, unweened calves and adults (excluding mature males). We are also curious how small changes in birth, and survival rates will impact growth trends. We would like to know if the population is healthy/stable and if it is not, which life stage will have the greatest impact for conservation strategies. 
+We are looking _Physeter macrocephalus occupying_, specifically a population of sperm whales in the Caribbean, to attempt to determine whether or not that population is expected to increase in size over time. We want to look at the the proportion between age classes, in this case, unweaned calves and adults (excluding mature males). We are also curious how small changes in birth, and survival rates will impact growth trends. We would like to know if the population is healthy/stable and if it is not, which life stage will have the greatest impact for conservation strategies. 
 
 ### Eigenvalue
 
@@ -30,7 +30,7 @@ dom_eigen <- max(eigenvalue$values)
 
 ### Stable age distribution (i.e. eigenvector)
 
-```{r eigenvector, echo = TRUE, eval = TRUE}
+```{r eigenvector, echo = FALSE, eval = TRUE}
 # get the eigenvector associated with dominant eigenvalue
 # first value refers to the calves and second value refers to the adults
 eigenvector <- eigenvalue$vectors[, 1]
@@ -43,9 +43,18 @@ prop_calves <- round(eigenvector[1]/(eigenvector[1] + eigenvector[2]),
 prop_adults <- round(eigenvector[2]/(eigenvector[1] + eigenvector[2]), 
                      digits = 3)
 ```
-There is a stable age distribution of approximately 79% adults and 21% unweened calves.
+There is a stable age distribution of approximately 79% adults and 21% unweaned calves.
 
-### Elastisity
+```{r, echo = TRUE, eval = TRUE}
+stable_age_ratio
+prop_calves
+prop_adults
+
+
+```
+
+
+### Elasticity
 
 
 
