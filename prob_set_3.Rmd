@@ -78,10 +78,9 @@ elasticity(whale_mat)
 
 The eigenvalue is 0.97 which means that the population size is declining because it is less than one. The eigenvector tells us the stable age dsitribution. There are 3.7 times as many adults as there are unweened calves, or there are aprroximately 79% adults and 21% unweened calves. The sensitivity tells us how much a small perturbation in each parameter will affect the population growth rate overall. So the highest sensitivity value is the adults that remain adults (_i.e._ continue to survive). The reason that this might be the highest sensitivity value is that the whales are "suddenly immortal" so that would clearly have a profound effect on the population size. But it is not biologically realistic. Although the survival of adults is still probably an important parameter. 
 
-The elasticity is the proportional sensitivity. 
+The elasticity is the proportional sensitivity. It looks at how a small perturbation in a parameter affects percent change in the eigenvalue. Adults that stay adults has the highest elasticity at 0.88. This implies that a change in the amount of adults would have the greatest imapct on the population growth. The next highest is juveniles that stay juveniles, which have an elasticity of 0.072. Therefore, behind adults, this age group is most important for altering the population growth.  
 
-So  
 
 
 ### Address question proposed using eigenvalue, eigenvector, elastisity, & sensitivity
-
+Based on the growth rate of 0.97, the population is nearly stable but is slightly declining since the eigenvalue is just under 1. Based on both the sensitivity and elasticity, the adults are the most important for the population growth rate. They have the highest sensitivity and elasticity. Based on this data, the growth rate of this population is most highly influenced by adults. Therefore,  conservation efforts should focus on adults.  After adults, juveniles that stay juveniles are the most influential for the population growth. 
