@@ -28,7 +28,7 @@ eigenvalue <- eigen(whale_mat)
 dom_eigen <- max(eigenvalue$values)
 ```
 
-```{r eigenvalue, echo = TRUE, eval = TRUE}
+```{r domeigen, echo = TRUE, eval = TRUE}
 # dominant eigenvalue
 dom_eigen
 ```
