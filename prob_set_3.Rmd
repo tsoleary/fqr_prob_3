@@ -23,9 +23,14 @@ We are looking _Physeter macrocephalus occupying_, specifically a population of 
 
 ### Eigenvalue
 
-```{r eigenvalue, echo = TRUE, eval = TRUE}
+```{r eigenvalue, echo = FALSE, eval = TRUE}
 eigenvalue <- eigen(whale_mat)
 dom_eigen <- max(eigenvalue$values)
+```
+
+```{r eigenvalue, echo = TRUE, eval = TRUE}
+# dominant eigenvalue
+dom_eigen
 ```
 
 ### Stable age distribution (i.e. eigenvector)
@@ -49,21 +54,14 @@ There is a stable age distribution of approximately 79% adults and 21% unweaned 
 stable_age_ratio
 prop_calves
 prop_adults
-
-
 ```
 
 
 ### Sensitivity
 
 ```{r}
-sensitivity <- function(A) {
-  d <- eigen(A)$values   # eigen values
-  w <- eigen(A)$vectors  # right eigen vectors
-  v <- Conj(solve(w))    # complex conjugate of left eigen vectors
-  # output of eigenvalues is decreasingly sorted.
-  v[1,] %*% t(w[,1])
-}
+#install.packages("popbio")
+library(popbio)
 
 sensitivity(whale_mat)
 ```
@@ -72,7 +70,18 @@ sensitivity(whale_mat)
 
 ### Elasticity
 
-### What does this tell you about the population?
+```{r}
+elasticity(whale_mat)
+```
+
+### What does the eigenvalue, the eigenvector, sensitivity, and elasticity tell you about the population?
+
+The eigenvalue is 0.97 which means that the population size is declining because it is less than one. The eigenvector tells us the stable age dsitribution. There are 3.7 times as many adults as there are unweened calves, or there are aprroximately 79% adults and 21% unweened calves. The sensitivity tells us how much a small perturbation in each parameter will affect the population growth rate overall. So the highest sensitivity value is the adults that remain adults (_i.e._ continue to survive). The reason that this might be the highest sensitivity value is that the whales are "suddenly immortal" so that would clearly have a profound effect on the population size. But it is not biologically realistic. Although the survival of adults is still probably an important parameter. 
+
+The elasticity is the proportional sensitivity. 
+
+So  
+
 
 ### Address question proposed using eigenvalue, eigenvector, elastisity, & sensitivity
 
