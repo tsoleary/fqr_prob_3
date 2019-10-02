@@ -3,6 +3,8 @@ title: "Problem Set 3"
 author: "Thomas O'Leary and Amanda Jones"
 date: "9/23/2019"
 output: pdf_document
+header-includes:
+  - \usepackage{xcolor}
 ---
 
 ```{r setup, include=FALSE}
@@ -19,7 +21,7 @@ whale_mat <- comadre$mat[2136][[1]]$matA
 
 ### Sperm whales
 
-We are looking _Physeter macrocephalus occupying_, specifically a population of sperm whales in the Caribbean, to attempt to determine whether or not that population is expected to increase in size over time. We want to look at the the proportion between age classes, in this case, unweaned calves and adults (excluding mature males). We are also curious how small changes in birth, and survival rates will impact growth trends. We would like to know if the population is healthy/stable and if it is not, which life stage will have the greatest impact for conservation strategies. 
+We are looking _Physeter macrocephalus_ occupying, specifically a population of sperm whales in the Caribbean, to attempt to determine whether or not that population is expected to increase in size over time. We want to look at the the proportion between age classes, in this case, unweaned calves and adults (excluding mature males). We are also curious how small changes in birth, and survival rates will impact growth trends. We would like to know if the population is healthy/stable and if it is not, which life stage will have the greatest impact for conservation strategies. 
 
 ### Eigenvalue
 
@@ -76,7 +78,7 @@ elasticity(whale_mat)
 
 ### What does the eigenvalue, the eigenvector, sensitivity, and elasticity tell you about the population?
 
-The eigenvalue is 0.97 which means that the population size is declining because it is less than one. The eigenvector tells us the stable age dsitribution. There are 3.7 times as many adults as there are unweened calves, or there are aprroximately 79% adults and 21% unweened calves. The sensitivity tells us how much a small perturbation in each parameter will affect the population growth rate overall. So the highest sensitivity value is the adults that remain adults (_i.e._ continue to survive). The reason that this might be the highest sensitivity value is that the whales are "suddenly immortal" so that would clearly have a profound effect on the population size. But it is not biologically realistic. Although the survival of adults is still probably an important parameter. 
+\textcolor{red}{The eigenvalue is `r dom_eigen` which} means that the population size is declining because it is less than one. The eigenvector tells us the stable age dsitribution. There are 3.7 times as many adults as there are unweened calves, or there are aprroximately 79% adults and 21% unweened calves. The sensitivity tells us how much a small perturbation in each parameter will affect the population growth rate overall. So the highest sensitivity value is the adults that remain adults (_i.e._ continue to survive). The reason that this might be the highest sensitivity value is that the whales are "suddenly immortal" so that would clearly have a profound effect on the population size. But it is not biologically realistic. Although the survival of adults is still probably an important parameter. 
 
 The elasticity is the proportional sensitivity. It looks at how a small perturbation in a parameter affects percent change in the eigenvalue. Adults that stay adults has the highest elasticity at 0.88. This implies that a change in the amount of adults would have the greatest imapct on the population growth. The next highest is juveniles that stay juveniles, which have an elasticity of 0.072. Therefore, behind adults, this age group is most important for altering the population growth.  
 
@@ -84,3 +86,10 @@ The elasticity is the proportional sensitivity. It looks at how a small perturba
 
 ### Address question proposed using eigenvalue, eigenvector, elastisity, & sensitivity
 Based on the growth rate of 0.97, the population is nearly stable but is slightly declining since the eigenvalue is just under 1. Based on both the sensitivity and elasticity, the adults are the most important for the population growth rate. They have the highest sensitivity and elasticity. Based on this data, the growth rate of this population is most highly influenced by adults. Therefore,  conservation efforts should focus on adults.  After adults, juveniles that stay juveniles are the most influential for the population growth. 
+
+
+## Feedback from Easton
+
+- Good job overall on this assignment. I think your biological interpretations are spot on.
+- It can be helpful to use in-line R code to make your document more reproducible (see my red text in question 4)
+- I thought your use of ``echo=TRUE`` for certain code chunks was very appropriate here
